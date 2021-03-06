@@ -1,0 +1,17 @@
+int sensePin=0; //defining pins//
+int ledpin=9;
+
+void setup()
+{
+analog reference(default); //not nescessary
+pinmode(sensepin,INPUT); //photodiode is the only source of input
+pinmode(ledpin,OUTPUT); //ledpin is the only output
+}
+
+void loop()
+{
+int val =analogread(sensepin); //creating a new variable named Val,which is actually representing the input from the photodiode//
+val=constraint(val,750,900); //for all input values>900 && values<750 are automatically mapped to 900 and 750 respectively//
+int ledlevel=map(val,750,900,0,255); //we scale down the input of the range of 750-900 to a scale of 0-255(FOR THE LED)//
+analogwrite(ledpin,ledlevel); //we instruct the LED to emit at the intensity of ledlevel variable//
+}
