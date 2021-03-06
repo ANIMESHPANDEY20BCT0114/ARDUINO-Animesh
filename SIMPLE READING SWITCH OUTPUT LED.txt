@@ -1,0 +1,18 @@
+int switchPIN=8; //8th port on Arduino board//
+int ledPIN=13; //default//
+
+void setup()
+{
+ pinmode(switchPIN, INPUT); //declaring 8th pin switch pin as input to the board
+ pinmode(ledPIN, OUTPUT);   //declaring led pin as output using pinmode command//
+}
+
+void loop()
+{
+if (digitalRead(switchPin) == HIGH) //if the digital reading or simply the reading from the input which is switch pin is high//
+ {
+  digitalwrite(ledPIN) == HIGH) //giving command or writing the command on the LED or the output port and turning it ON//
+ }
+else
+ {
+  digitalwrite(ledpin) ==LOW) //LED is OFF//
