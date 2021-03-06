@@ -1,0 +1,33 @@
+int ledPin = 13; //defining ports//
+int switchPin = 8; //''//
+boolean lastButton=LOW; //setting initial value(default) to 0//
+boolean currentButton = LOW; //defined to read the current status of the switch,initially set to 0//
+boolean ledOn= false; //''//
+
+
+void setup()
+{
+  pinMode(switchPin,INPUT); //defining input and outputs using setup function//
+  pinMode(ledPin,OUTPUT);
+}
+boolean debounce(boolean last) //making a new function known as debounce to avoid the bouncing effect in switches//
+{
+  boolean current = digitalRead(switchPin);
+  if (last!=current) //if previous state of switch not equal to the current state(switch changes state), we go for debouncing//
+  {
+    delay(5); //w8 of 5ms to let the switch finish bouncing//
+    current=digitalRead(switchPin); //reading again after w8 of 5ms//
+  }
+  return current;
+}
+
+void loop()
+{
+  currentButton = debounce(lastButton);
+  if (lastButton== LOW && currentButton == HIGH)
+  {
+    ledOn!=ledOn;
+  }
+  lastButton=digitalRead(switchPin);
+  digitalWrite(ledPin,ledOn);
+}
