@@ -5,7 +5,7 @@ void setup()
   //sets the button pin as input
   pinMode(buttonPin,INPUT);
   //Allows us to obtain data from the arduino to the laptop//
-  Serial.begin(9600);
+  Serial.begin(9600); //9600 is the speed at which the board communicates with the laptop//
 }
 void loop()
 {
