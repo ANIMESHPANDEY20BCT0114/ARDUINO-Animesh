@@ -1,0 +1,23 @@
+//FIRST PROGRAM ANIMESH//
+//TURNS LED ON AND OFF AT AN INTERVAL OF 1000ms//
+
+int LedPIN=13; //Defining which will be the pin on the arduino board which will have the led connected to it//
+
+void setup() //includes the task that the arduino will be doing once or when its turned on for the first time/
+{
+ //all one time jobs//
+ pinmode(LedPIN,OUTPUT);  //DECLARE WHICH PIN DOES WHAT IN THE PROGRAM//
+
+}
+
+void loop() //includes the tasks which needs to be repeated continously in the loop for the task//
+{
+digitalWrite(ledPIN, HIGH); //we give the command to The LedPIn(no. 13 of the board) to turn itself on//
+delay(1000); //we wait 1000ms//
+digitalwrite(ledpin, LOW); //command to ledpin to turn off//
+delay(1000); //agen w8 1000ms//
+}
+
+
+
+
