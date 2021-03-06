@@ -4,7 +4,7 @@
 //const int switchPin = 8;
 boolean lastButton=LOW;
 boolean currentButton = LOW;
-int ledLevel = 0; //since we are communicating with PWM pins, they have brightness level we have values from 0-255 to control the brightness.
+int ledLevel = 0; //since we are communicating with PWM pins, they have brightness level we have values from 0-255 to control the brightness,Changing boolean to int//
 
 
 
@@ -13,7 +13,7 @@ void setup()
   pinMode(switchPin,INPUT);
   pinMode(ledPin,OUTPUT);
 }
-boolean debounce(boolean last)
+boolean debounce(boolean last)        /*TYPICAL FUNCTION TO AVOID BOUNCING ON A SWITCH
 {
   boolean current = digitalRead(switchPin);
   if (last!=current)
@@ -21,18 +21,18 @@ boolean debounce(boolean last)
     delay(5);
     current=digitalRead(switchPin);
   }
-  return current;
+  return current;                    //FUNCTION ENDS//
 }
 
 void loop()
 {
   currentButton = debounce(lastButton);
-  if (lastButton== LOW && currentButton == HIGH)
+  if (lastButton== LOW && currentButton == HIGH) //IF THE SWITCH CHANGES STATES FROM OFF TO ON,OR IS PRESSED ONCE//
   {
-    ledLevel=ledLevel+51;
+    ledLevel=ledLevel+51; //INCREASE THE BRIGHTNESS INTENSITY BY 51 UNITS ,TOTAL UNITS ARE 255(51*5)//   
   }
   lastButton=digitalRead(switchPin);
   
-  if (ledLevel>255) ledLevel = 0;
-  analogWrite(ledPin,ledLevel);
+  if (ledLevel>255) ledLevel = 0; //if intensity exceeds 255 we reset to 0//
+  analogWrite(ledPin,ledLevel); //we order the LED Pin to have an intensity equalling ledlevel(0-255)//
 }
